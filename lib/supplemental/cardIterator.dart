@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+
+import '../homeIconPages/appointments.dart';
 import '../homeIconPages/calendar.dart';
 import '../homeIconPages/contactInfo.dart';
 import '../homeIconPages/faq.dart';
 import '../homeIconPages/hospitalInfo.dart';
 import '../homeIconPages/medRecords.dart';
-import '../homeIconPages/preferences.dart';
 import '../homeIconPages/sos.dart';
-import '../homeIconPages/appointments.dart';
-
-// Midwife Routes
-import '../midwifeHomePages/preferences.dart';
 import '../midwifeHomePages/drivers.dart';
 import '../midwifeHomePages/emergencies.dart';
 import '../midwifeHomePages/faq.dart';
 import '../midwifeHomePages/notifications.dart';
 import '../midwifeHomePages/patients.dart';
+import '../midwifeHomePages/preferences.dart';
+// Midwife Routes
 
 List<Map<String, dynamic>> midwifeMenus = [
   {
@@ -50,7 +49,7 @@ List<Map<String, dynamic>> midwifeMenus = [
   {
     'icon': 'assets/icons/midwife/18.png',
     'title': 'Preferences',
-    'url': Preferences(),
+    'url': MyPreferences(),
     'color': Colors.orangeAccent
   }
 ];

@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:bast/login/signIn.dart';
+import 'package:bast/sidebarPages/profile.dart';
+import 'package:flutter/material.dart';
 
 class SideDrawer extends StatefulWidget {
   @override
@@ -54,7 +55,12 @@ class _SideDrawerState extends State<SideDrawer> {
                       child: Column(
                         children: <Widget>[
                           OutlineButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Route route = MaterialPageRoute(
+                                builder: (context) => Profile(),
+                              );
+                              Navigator.push(context, route);
+                            },
                             color: Colors.transparent,
                             highlightColor: Colors.white70,
                             shape: StadiumBorder(),
