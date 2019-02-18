@@ -25,7 +25,7 @@ List<Map<String, dynamic>> midwifeMenus = [
   {
     'icon': 'assets/icons/midwife/2.png',
     'title': 'Patients',
-    'url': Patients(),
+    'url': MyPatients(),
     'color': Colors.purple[300]
   },
   {

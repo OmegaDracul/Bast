@@ -13,11 +13,33 @@ class _ProfileState extends State<Profile> {
         title: Text('Profile'),
         centerTitle: true,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: <Widget>[
-            Expanded(
+      body: ProfileWidget(),
+    );
+  }
+}
+
+class ProfileWidget extends StatefulWidget {
+  const ProfileWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  ProfileWidgetState createState() {
+    return ProfileWidgetState();
+  }
+}
+
+class ProfileWidgetState extends State<ProfileWidget> {
+  bool _obscureText = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -54,24 +76,137 @@ class _ProfileState extends State<Profile> {
                 ],
               ),
             ),
-            Expanded(
-              child: Row(
-                children: <Widget>[
-                  TextFormField(
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      //contentPadding: EdgeInsets.all(10),
-                      labelText: "Emergency Phone",
-                      hintText: "(+234) 800 000 000",
-                      border: OutlineInputBorder(),
-                    ),
+          ),
+          Expanded(
+            child: Form(
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: ListView(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.phone,
+                          decoration: InputDecoration(
+                            //contentPadding: EdgeInsets.all(10),
+                            labelText: "Update Phone Number",
+                            filled: true,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.deepPurple, width: 2),
+                            ),
+                            fillColor: Colors.transparent,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            //contentPadding: EdgeInsets.all(10),
+                            labelText: "Update Email Address Number",
+                            filled: true,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.deepPurple, width: 2),
+                            ),
+                            fillColor: Colors.transparent,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.text,
+                          obscureText: _obscureText,
+                          decoration: InputDecoration(
+                            //contentPadding: EdgeInsets.all(10),
+                            labelText: "Update Address",
+                            //labelStyle: TextStyle(color: Co),
+                            filled: true,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.deepPurple, width: 2),
+                            ),
+                            fillColor: Colors.transparent,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.text,
+                          obscureText: _obscureText,
+                          decoration: InputDecoration(
+                              //contentPadding: EdgeInsets.all(10),
+                              labelText: "Update Password",
+                              //labelStyle: TextStyle(color: Co),
+                              filled: true,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Colors.deepPurple, width: 2),
+                              ),
+                              fillColor: Colors.transparent,
+                              suffixIcon: IconButton(
+                                icon: _obscureText
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                              )),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 40),
+                          width: 100,
+                          height: 100,
+                          child: RaisedButton(
+                            shape: StadiumBorder(),
+                            color: Colors.deepPurple,
+                            child: Center(
+                              child: Text(
+                                "Update",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontFamily: 'MontserratAlternate',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
 }
+
+/* class ProfileWidget extends StatefulWidget {
+  @override
+  _ProfileWidgetState createState() => _ProfileWidgetState();
+}
+
+class _ProfileWidgetState extends State<ProfileWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+
+    );
+  }
+} */

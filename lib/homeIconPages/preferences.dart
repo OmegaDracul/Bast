@@ -46,11 +46,13 @@ class _PreferencesState extends State<Preferences> {
             onChanged: _pushNotificationsChange,
             title: Text("Push Notifications"),
           ),
+          Divider(),
           SwitchListTile.adaptive(
             value: _dailyReminders,
             onChanged: _dailyRemindersChange,
             title: Text("Daily Reminders"),
           ),
+          Divider(),
         ],
       ),
     );
