@@ -7,6 +7,26 @@ class MyContactInfo extends StatefulWidget {
 }
 
 class _MyContactInfoState extends State<MyContactInfo> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "My Contact Info",
+          style: TextStyle(fontFamily: "Comfortaa"),
+        ),
+      ),
+      body: ContactInfo(),
+    );
+  }
+}
+
+class ContactInfo extends StatefulWidget {
+  @override
+  _ContactInfoState createState() => _ContactInfoState();
+}
+
+class _ContactInfoState extends State<ContactInfo> {
   final ContactPicker _contactPicker = ContactPicker();
   Contact _contact;
 
@@ -34,7 +54,10 @@ class _MyContactInfoState extends State<MyContactInfo> {
               //width: 20,
               child: MaterialButton(
                 color: Colors.deepPurple[700],
-                child: Text("Change Emergency Contact", style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "Change Emergency Contact",
+                  style: TextStyle(color: Colors.white),
+                ),
                 onPressed: () async {
                   Contact contact = await _contactPicker.selectContact();
                   setState(
