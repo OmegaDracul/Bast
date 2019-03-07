@@ -38,6 +38,8 @@ class MyDriversState extends State<MyDrivers> {
             Container(
               color: Colors.white,
               child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text('List of Hospital Drivers', style: TextStyle(fontSize: 20),),
                 alignment: Alignment.center,
                 child: Text(
                   'List of Hospital Drivers',
@@ -48,6 +50,7 @@ class MyDriversState extends State<MyDrivers> {
             DriverBuild()
           ],
         ),
+      ),
       ),
     );
   }
