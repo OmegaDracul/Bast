@@ -1,4 +1,84 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+// To parse this JSON data, do
+//
+//     final post = postFromJson(jsonString);
+
+import 'dart:convert';
+
+Post postFromJson(String str) {
+    final jsonData = json.decode(str);
+    return Post.fromJson(jsonData);
+}
+
+String postToJson(Post data) {
+    final dyn = data.toJson();
+    return json.encode(dyn);
+}
+
+class Post {
+    Name name;
+    String dob;
+    String age;
+
+    Post({
+        this.name,
+        this.dob,
+        this.age,
+    });
+
+    factory Post.fromJson(Map<String, dynamic> json) => new Post(
+        name: Name.fromJson(json["name"]),
+        dob: json["dob"],
+        age: json["age"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "name": name.toJson(),
+        "dob": dob,
+        "age": age,
+    };
+}
+
+class Name {
+    String fname;
+    String mname;
+    String lname;
+
+    Name({
+        this.fname,
+        this.mname,
+        this.lname,
+    });
+
+    factory Name.fromJson(Map<String, dynamic> json) => new Name(
+        fname: json["fname"],
+        mname: json["mname"],
+        lname: json["lname"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "fname": fname,
+        "mname": mname,
+        "lname": lname,
+    };
+}
+
+Future<Post> fetchPost() async {
+  final response =
+      await http.get('http://bast.org.ng/web_app/api/patients/1105198/1/personal_info');
+
+  if (response.statusCode == 200) {
+    return Post.fromJson(json.decode(response.body));
+  } else {
+    throw Exception('Failed to load post');
+  }
+}
+
+
 
 class MyFAQ extends StatefulWidget {
   @override
@@ -6,6 +86,14 @@ class MyFAQ extends StatefulWidget {
 }
 
 class _MyFAQState extends State<MyFAQ> {
+  Future<Post> post;
+
+  @override
+  void initState() {
+    super.initState();
+    post = fetchPost();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,7 +104,21 @@ class _MyFAQState extends State<MyFAQ> {
             style: TextStyle(fontFamily: "Comfortaa"),
           ),
         ),
-        body: FAQ(),
+        body: Center(
+          child: FutureBuilder<Post>(
+            future: fetchPost(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data.age, style: TextStyle(fontSize: 30),);
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+
+              // By default, show a loading spinner
+              return CircularProgressIndicator();
+            },
+          ),
+        ),
       ),
     );
   }

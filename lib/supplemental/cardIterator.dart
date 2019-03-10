@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:bast/app.dart';
 import '../homeIconPages/appointments.dart';
 import '../homeIconPages/calendar.dart';
 import '../homeIconPages/contactInfo.dart';
@@ -105,6 +105,9 @@ List<Map<String, dynamic>> menus = [
   },
 ];
 
+
+
+
 class MenuItem {
   final String icon;
   final String title;
@@ -114,9 +117,49 @@ class MenuItem {
   MenuItem(this.icon, this.title, this.url, this.color);
 }
 
+
 class GridBuild extends StatelessWidget {
+  final GlobalKey scaffoldKey;
+
+  GridBuild({Key key, this.scaffoldKey}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+      void _showSOSDialog(){
+      showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: Text('SOS'),
+            content: Text(
+              'This will send an immediate emergency request to your preferred hospital with your current location',
+            ),
+            actions: <Widget>[
+              Row(
+                children: <Widget>[
+                  FlatButton(
+                    child: Text('Close'),
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  FlatButton(
+                    child: Text('Send', style: TextStyle(color: Colors.white),),
+                    shape: StadiumBorder(),
+                    color: Theme.of(context).primaryColor,
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                      final snackBar = SnackBar(content: Text('SOS Request sent', style: TextStyle(color: Colors.white),),backgroundColor: Theme.of(context).primaryColor,duration: Duration(seconds: 3),);
+                      (scaffoldKey.currentState as ScaffoldState).showSnackBar(snackBar);
+                    },
+                  )
+                ] 
+              )
+            ],
+          );
+        }
+      );
+    }
     List<Widget> createGrid(List arr) {
       List<MenuItem> menus = [];
       List<Widget> widgets = [];
@@ -134,7 +177,7 @@ class GridBuild extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 2.0),
               child: GestureDetector(
-                onTap: () {
+                onTap: menus[i].title == 'SOS' ? _showSOSDialog : () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => menus[i].url),

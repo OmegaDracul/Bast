@@ -38,11 +38,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool patient = false;
+  bool patient = true;
 
+  final _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       drawer: SideDrawer(),
       appBar: AppBar(
         backgroundColor: Color(0xFF2c1a4c),
@@ -70,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         //centerTitle: true, // // child: Image.asset('icons/homeIcons.png')//
       ),
-      body: patient ? Home() : MidwifeHome(),
+      body: patient ? Home(scaffoldKey : _scaffoldKey) : MidwifeHome(),
     );
   }
 }

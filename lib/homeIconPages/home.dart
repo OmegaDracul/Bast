@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../supplemental/cardIterator.dart';
 
 class Home extends StatelessWidget {
+  final GlobalKey scaffoldKey;
+
+  Home({Key key, this.scaffoldKey}) : super(key : key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -84,7 +88,7 @@ class Home extends StatelessWidget {
                   //   },
                   // )
                   //     //children: <Widget>[List.generate(8, generator)],
-                  child: GridBuild(),
+                  child: GridBuild(scaffoldKey : scaffoldKey),
                 ),
               ),
             ],
