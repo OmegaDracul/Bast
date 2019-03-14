@@ -26,7 +26,6 @@ dependencies:
   google_api_availability: 1.0.4
   http: ^0.12.0+1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

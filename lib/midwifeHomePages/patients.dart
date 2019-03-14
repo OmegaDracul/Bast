@@ -41,11 +41,13 @@ class _PatientsState extends State<Patients> {
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  _contact == null
-                      ? 'No Emergency Contact Selected.'
-                      : _contact.toString(),
-                  style: TextStyle(fontSize: 16),
+                child: Center(
+                  child: Text(
+                    _contact == null
+                        ? 'No Emergency Contact Selected.'
+                        : _contact.toString(),
+                    style: TextStyle(fontSize: 18),
+                  ),
                 ),
               ),
             ),

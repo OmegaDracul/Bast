@@ -7,7 +7,6 @@ Geolocator _geolocator = new Geolocator();
 List<Placemark> positions;
 final now = new DateTime.now();
 
-
 Future locateUser() async {
   Position location = await Geolocator()
   .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
@@ -16,6 +15,9 @@ Future locateUser() async {
   positions = placemarks;
 }
 
+main(List<String> args) async{
+  await locateUser();
+}
 
 
 List<Map<String, dynamic>> emergencyArr = [
@@ -147,3 +149,4 @@ class _EmergencyBuildState extends State<EmergencyBuild> {
     );
   }
 }
+
