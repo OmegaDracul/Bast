@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'signIn.dart';
+import 'info.dart';
 //import 'package:bast/app.dart';
 
 class SignUp extends StatefulWidget {
@@ -33,7 +34,7 @@ class _SignUpState extends State<SignUp> {
             ],
           ),
           content: Text(
-            "Tap OKAY to proceed",
+            "Tap Ok to proceed",
             style: TextStyle(fontSize: 13, color: Colors.grey),
             textAlign: TextAlign.center,
           ),
@@ -42,10 +43,10 @@ class _SignUpState extends State<SignUp> {
               color: Colors.grey[700],
               textColor: Colors.white,
               shape: StadiumBorder(),
-              child: Text("OKAY"),
+              child: Text("Ok"),
               onPressed: () {
                 Route route = MaterialPageRoute(
-                  builder: (context) => SignIn(),
+                  builder: (context) => Info(),
                 );
                 Navigator.push(context, route);
               },
@@ -98,7 +99,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Form(
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(5.0, 20.0, 5.0, 0.0),
+                    padding: EdgeInsets.fromLTRB(5.0, 40.0, 5.0, 0.0),
                     child: SingleChildScrollView(
                       child: Column(
                         children: <Widget>[
@@ -181,11 +182,11 @@ class _SignUpState extends State<SignUp> {
                                       decoration: InputDecoration(
                                         //contentPadding: EdgeInsets.fromLTRB(14, 20, 0, 2),
                                         filled: true,
-                                        labelText: "Email",
+                                        labelText: "Username",
                                         labelStyle:
                                             TextStyle(color: Colors.white),
                                         prefixIcon: Icon(
-                                          Icons.email,
+                                          Icons.person,
                                           color: Colors.white,
                                         ),
                                         //fillColor: Colors.white,
@@ -205,43 +206,7 @@ class _SignUpState extends State<SignUp> {
                                     child: TextFormField(
                                       // enabled: false,
                                       //initialValue: '4',
-                                      style: TextStyle(color: Colors.white),
-                                      keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                        //contentPadding: EdgeInsets.fromLTRB(14, 20, 0, 2),
-                                        filled: true,
-                                        labelText: "Phone",
-                                        labelStyle:
-                                            TextStyle(color: Colors.white),
-                                        prefixIcon: Icon(
-                                          Icons.phone,
-                                          color: Colors.white,
-                                        ),
-                                        //fillColor: Colors.white,
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20.0),
-                            child: Row(
-                              children: <Widget>[
-                                Expanded(
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10.0),
-                                    child: TextFormField(
-                                      // enabled: false,
-                                      style: TextStyle(color: Colors.white),
-                                      obscureText: true,
-                                      //keyboardType: TextInputType.number,
+                                      style: TextStyle(color: Colors.white),                                      
                                       decoration: InputDecoration(
                                         //contentPadding: EdgeInsets.fromLTRB(14, 20, 0, 2),
                                         filled: true,
@@ -261,62 +226,11 @@ class _SignUpState extends State<SignUp> {
                                     ),
                                   ),
                                 ),
-                                Expanded(
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.white),
-                                        shape: BoxShape.rectangle,
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                      child: Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(8, 3, 0, 3),
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton(
-                                            iconSize: 0,
-                                            //value: this._selectPackage,
-                                            //style: TextStyle(color: Colors.white),
-                                            items: [
-                                              'Eko Hospital',
-                                              'LASUTH',
-                                              'Hilton Hospital',
-                                              'National Hospital',
-                                            ].map(
-                                              (val) {
-                                                return DropdownMenuItem(
-                                                  value: val,
-                                                  child: Text(val),
-                                                );
-                                              },
-                                            ).toList(),
-                                            hint: Text(
-                                              this._selectedHospital,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 14),
-                                            ),
-                                            onChanged: (newVal) {
-                                              setState(
-                                                () {
-                                                  this._selectedHospital =
-                                                      newVal;
-                                                },
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 20),
+                            padding: EdgeInsets.only(top: 60),
                             child: Container(
                               width: 150,
                               height: 55,
@@ -333,21 +247,28 @@ class _SignUpState extends State<SignUp> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  _registeredDialog();
+                                  //_registeredDialog();
+                                  Route route = MaterialPageRoute(
+                                    builder: (context) => Info(),
+                                  );
+                                  Navigator.push(context, route);
                                 },
                               ),
                             ),
                           ),
-                          FlatButton(
-                            child: Text(
-                              "Already have an account? Sign in",
-                              style: TextStyle(color: Colors.white),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: FlatButton(
+                              child: Text(
+                                "Already have an account? Sign in",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              onPressed: () {
+                                Route route = MaterialPageRoute(
+                                    builder: (context) => SignIn());
+                                Navigator.push(context, route);
+                              },
                             ),
-                            onPressed: () {
-                              Route route = MaterialPageRoute(
-                                  builder: (context) => SignIn());
-                              Navigator.push(context, route);
-                            },
                           ),
                         ],
                       ),

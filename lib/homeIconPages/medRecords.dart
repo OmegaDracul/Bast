@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'risks.dart';
 
 bool _pressed = true;
-bool _healthy = true;
+bool _healthy = false;
 
 class MyMedRecords extends StatefulWidget {
   @override
@@ -210,12 +211,16 @@ class _MedRecordsState extends State<MedRecords> {
                                         EdgeInsets.fromLTRB(10, 10, 10, 10),
                                     child: Column(
                                       children: <Widget>[
-                                        Image.asset(
-                                            _healthy
-                                                ? 'assets/icons/medRecords/Path_1.png'
-                                                : 'assets/icons/medRecords/Compound Path_1.png',
-                                            width: 40,
-                                            height: 40),
+                                        _healthy ? Image.asset('assets/icons/medRecords/Path_1.png',width: 40, height: 40) :
+                                            GestureDetector(
+                                              child: Icon(Icons.close,color: Colors.red,size: 40),
+                                              onTap: (){
+                                                Route route = MaterialPageRoute(
+                                                  builder: (context) => Risks(),
+                                                );
+                      Navigator.push(context, route);
+                                              },
+                                            ), 
                                         Container(
                                           child: _healthy
                                               ? Column(

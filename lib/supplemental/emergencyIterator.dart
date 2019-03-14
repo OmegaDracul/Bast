@@ -7,15 +7,13 @@ Geolocator _geolocator = new Geolocator();
 List<Placemark> positions;
 final now = new DateTime.now();
 
-
-Future<void> locateUser() async {
+Future locateUser() async {
   Position location = await Geolocator()
   .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
   final List<Placemark> placemarks = await _geolocator.placemarkFromCoordinates(location.latitude, location.longitude);
   positions = placemarks;
 }
-
 
 main(List<String> args) async{
   await locateUser();
@@ -41,7 +39,23 @@ class Emergency {
   Emergency(this.name, this.time, this.severity);
 }
 
-class EmergencyBuild extends StatelessWidget {
+
+class EmergencyBuild extends StatefulWidget {
+  @override
+  _EmergencyBuildState createState() => _EmergencyBuildState();
+}
+
+class _EmergencyBuildState extends State<EmergencyBuild> {
+  @override
+    void initState() {
+      super.initState();
+      locateUser().then((result){
+        setState(() {
+          positions = positions;      
+        });
+      });
+    }
+    
   @override
   Widget build(BuildContext context) {
     List<Widget> createEmergency(List arr) {
@@ -80,7 +94,7 @@ class EmergencyBuild extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: <Widget>[
                                   Expanded(child: Center(child: Text('Location', style: TextStyle(fontSize: 16.0),))),
-                                  Expanded(child: Center(child: Text('${emergencies[i].position[0].thoroughfare}, ${emergencies[i].position[0].thoroughfare}', softWrap:true,))),
+                                  Expanded(child: Center(child: Text('${emergencies[i].position[0].thoroughfare}, ${emergencies[i].position[0].locality}', softWrap:true,))),
                               ],
                             ),
                           )
@@ -135,3 +149,4 @@ class EmergencyBuild extends StatelessWidget {
     );
   }
 }
+
