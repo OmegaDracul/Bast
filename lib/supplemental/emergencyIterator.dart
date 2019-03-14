@@ -26,7 +26,7 @@ List<Map<String, dynamic>> emergencyArr = [
     'time': '${now.hour} : ${now.minute} : ${now.second}',
     'severity' : 'severe'
   },
-  
+
 ];
 
 class Emergency {
@@ -34,8 +34,8 @@ class Emergency {
   List<Placemark> position = positions;
   String time;
   final String severity;
-   
-  
+
+
   Emergency(this.name, this.time, this.severity);
 }
 
@@ -51,11 +51,11 @@ class _EmergencyBuildState extends State<EmergencyBuild> {
       super.initState();
       locateUser().then((result){
         setState(() {
-          positions = positions;      
+          positions = positions;
         });
       });
     }
-    
+
   @override
   Widget build(BuildContext context) {
     List<Widget> createEmergency(List arr) {
@@ -84,7 +84,7 @@ class _EmergencyBuildState extends State<EmergencyBuild> {
                 ),
                 Table(
                   border: TableBorder.all(color: Colors.black12, style: BorderStyle.solid, width: 1.0),
-                  children: [                  
+                  children: [
                     TableRow(
                       children: [
                         TableCell(
@@ -138,7 +138,7 @@ class _EmergencyBuildState extends State<EmergencyBuild> {
               ],
             ),
           ),
-        ); 
+        );
         widgets.add(widget);
       }
       return widgets;

@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 //
 //     final post = postFromJson(jsonString);
 
-import 'dart:convert';
+/* import 'dart:convert';
 
 Post postFromJson(String str) {
     final jsonData = json.decode(str);
@@ -78,7 +78,7 @@ Future<Post> fetchPost() async {
   }
 }
 
-
+ */
 
 class MyFAQ extends StatefulWidget {
   @override
@@ -86,13 +86,13 @@ class MyFAQ extends StatefulWidget {
 }
 
 class _MyFAQState extends State<MyFAQ> {
-  Future<Post> post;
+  //Future<Post> post;
 
-  @override
+  /* @override
   void initState() {
     super.initState();
     post = fetchPost();
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,7 @@ class _MyFAQState extends State<MyFAQ> {
             style: TextStyle(fontFamily: "Comfortaa"),
           ),
         ),
-        body: Center(
+        body: FAQ()/* Center(
           child: FutureBuilder<Post>(
             future: fetchPost(),
             builder: (context, snapshot) {
@@ -118,7 +118,7 @@ class _MyFAQState extends State<MyFAQ> {
               return CircularProgressIndicator();
             },
           ),
-        ),
+        ), */
       ),
     );
   }

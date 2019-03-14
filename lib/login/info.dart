@@ -40,7 +40,7 @@ class _InfoFormState extends State<InfoForm> {
     return Form(
       key: _formKey,
       child: Column(
-        mainAxisSize: MainAxisSize.max,                  
+        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Padding(
@@ -54,7 +54,7 @@ class _InfoFormState extends State<InfoForm> {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 filled: false,
-                labelText: "Phone Number",                                          
+                labelText: "Phone Number",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).primaryColor)
                 )
@@ -68,7 +68,7 @@ class _InfoFormState extends State<InfoForm> {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 filled: false,
-                labelText: "Email",                                          
+                labelText: "Email",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).primaryColor)
                 )
@@ -82,7 +82,7 @@ class _InfoFormState extends State<InfoForm> {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 filled: false,
-                labelText: "NHIS Number",                                          
+                labelText: "NHIS Number",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).primaryColor)
                 )
@@ -96,7 +96,7 @@ class _InfoFormState extends State<InfoForm> {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 filled: false,
-                labelText: "No. of pregnancies (Gravida)",                                          
+                labelText: "No. of pregnancies (Gravida)",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).primaryColor)
                 )
@@ -110,7 +110,7 @@ class _InfoFormState extends State<InfoForm> {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 filled: false,
-                labelText: "No. of deliveries (Parity)",                                          
+                labelText: "No. of deliveries (Parity)",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).primaryColor)
                 )
@@ -124,7 +124,7 @@ class _InfoFormState extends State<InfoForm> {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 filled: false,
-                labelText: "Number of Miscarriages",                                          
+                labelText: "Number of Miscarriages",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).primaryColor)
                 )
@@ -138,7 +138,7 @@ class _InfoFormState extends State<InfoForm> {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 filled: false,
-                labelText: "Number of Abortions",                                          
+                labelText: "Number of Abortions",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).primaryColor)
                 )
@@ -214,7 +214,7 @@ class _InfoFormState extends State<InfoForm> {
             child: Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[                  
+                children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(bottom:12.0),
                     child: TextFormField(
@@ -284,7 +284,7 @@ class _InfoFormState extends State<InfoForm> {
                         )
                       ),
                     ),
-                  ),                  
+                  ),
                 ],
               )
             ),
@@ -329,12 +329,12 @@ class _DOBInputState extends State<DOBInput> {
         context: context,
         initialDate: _dob,
         firstDate: DateTime(1900),
-        lastDate: DateTime(2100));      
+        lastDate: DateTime(2100));
     if (picked != null && picked != _dob)
       setState(() {
         _dob = picked;
         if (_datePressed) {
-          
+
         }
         else{
           _datePressed = !_datePressed;
@@ -347,7 +347,7 @@ class _DOBInputState extends State<DOBInput> {
     return FlatButton(
       //color: Theme.of(context).backgroundColor,
       clipBehavior: Clip.antiAlias,
-      shape: OutlineInputBorder(borderSide: BorderSide(width: _datePressed ? 2 : 1,color: _datePressed ? Theme.of(context).primaryColor : Colors.black54)),                           
+      shape: OutlineInputBorder(borderSide: BorderSide(width: _datePressed ? 2 : 1,color: _datePressed ? Theme.of(context).primaryColor : Colors.black54)),
       padding: EdgeInsets.fromLTRB(10,15,10,15),
       child: _datePressed ? Row(
         children: <Widget>[
@@ -355,9 +355,9 @@ class _DOBInputState extends State<DOBInput> {
             children: <Widget>[
               Text('${_dob.day}-${_dob.month}-${_dob.year}', textAlign: TextAlign.left, style: TextStyle(fontSize: 18, color: Colors.black)),
             ],
-          ) 
+          )
         ]
-      ): 
+      ):
       Row(
         children: <Widget>[
           Expanded(child: Text('Select Date', style: TextStyle(fontSize: 16, color: Colors.black54), softWrap: true)),
@@ -439,12 +439,12 @@ class _PeriodInputState extends State<PeriodInput> {
         context: context,
         initialDate: _period,
         firstDate: DateTime(1900),
-        lastDate: DateTime(2100));      
+        lastDate: DateTime(2100));
     if (picked != null && picked != _period)
       setState(() {
         _period = picked;
         if (_datePressed) {
-          
+
         }
         else{
           _datePressed = !_datePressed;
@@ -457,7 +457,7 @@ class _PeriodInputState extends State<PeriodInput> {
     return FlatButton(
       //color: Theme.of(context).backgroundColor,
       clipBehavior: Clip.antiAlias,
-      shape: OutlineInputBorder(borderSide: BorderSide(width: _datePressed ? 2 : 1,color: _datePressed ? Theme.of(context).primaryColor : Colors.black54)),                           
+      shape: OutlineInputBorder(borderSide: BorderSide(width: _datePressed ? 2 : 1,color: _datePressed ? Theme.of(context).primaryColor : Colors.black54)),
       padding: EdgeInsets.fromLTRB(10,15,10,15),
       child: _datePressed ? Row(
         children: <Widget>[
@@ -465,9 +465,9 @@ class _PeriodInputState extends State<PeriodInput> {
             children: <Widget>[
               Text('${_period.day}-${_period.month}-${_period.year}', textAlign: TextAlign.left, style: TextStyle(fontSize: 18, color: Colors.black)),
             ],
-          ) 
+          )
         ]
-      ): 
+      ):
       Row(
         children: <Widget>[
           Expanded(flex: 3,child: Text('Select last Period Date', style: TextStyle(fontSize: 16, color: Colors.black54), softWrap: true)),

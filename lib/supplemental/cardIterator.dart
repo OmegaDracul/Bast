@@ -153,7 +153,7 @@ class GridBuild extends StatelessWidget {
                       (scaffoldKey.currentState as ScaffoldState).showSnackBar(snackBar);
                     },
                   )
-                ] 
+                ]
               )
             ],
           );
